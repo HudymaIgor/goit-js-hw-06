@@ -25,17 +25,20 @@
 const form = document.querySelector('.login-form');
 form.addEventListener('submit', onformSubmit);
 
-function onformSubmit(even) { 
+function onformSubmit(event) { 
     event.preventDefault();
-    const {
-        elements: { email, password }
-    } = event.currentTarget;
-    if (email.value === "" || password.value === "" ) { 
-      return alert('Alert! All fields must be hidden')
-    } 
+const { elements: { email, password } } = event.currentTarget;
+  
+  if (email.value === "" || password.value === "") {
+    alert('Alert! All fields must be hidden')
+  } else {
     console.log(` email: ${email.value}`)
     console.log(` password: ${password.value}`)
-    event.currentTarget.reset
+     
+  }
+
+ alert('Fine! You finished registration!')
+    event.target.reset();
 }
 
 
