@@ -22,23 +22,24 @@
 // Выведи обьект с введенными данными в консоль и очисти значения полей формы 
 // методом reset.
 
-const form = document.querySelector('.login-form');
-form.addEventListener('submit', onformSubmit);
 
-function onformSubmit(event) { 
-    event.preventDefault();
-const { elements: { email, password } } = event.currentTarget;
+
+const formEl = document.querySelector('.login-form ')
+const btnSubmitEl = document.querySelector('button')
+
+formEl.addEventListener('submit', (event) => {
+  const {
+    elements: { email, password }
+  } = event.target;
+  event.preventDefault();
+
+  if (email.value.length === 0  || password.value.length === 0) {
+    return alert('Alert! All fields must be filled')
   
-  if (email.value === "" || password.value === "") {
-    alert('Alert! All fields must be hidden')
-  } else {
-    console.log(` email: ${email.value}`)
-    console.log(` password: ${password.value}`)
-     
-  }
+  } 
+    var obj = { email: email.value, password: password.value };
+    // alert('Fine! You finished registration!')
 
- alert('Fine! You finished registration!')
-    event.target.reset();
-}
-
-
+  event.target.reset();
+  console.log(obj);
+});
